@@ -1,0 +1,332 @@
+:root {
+  --bg: #ffffff;
+  --bg-alt: #ffffff;
+  --text: #363636;
+  --text-muted: #6b6f76;
+  --heading: #1f2328;
+  --link: #3273dc;
+  --btn-bg: #363636;
+  --btn-text: #ffffff;
+  --btn-hover: #1f1f1f;
+  --border: #e3e5e8;
+  --code-bg: #f0f1f3;
+  --media-bg: #e9ebee;
+  --radius: 10px;
+  --max: 1100px;
+  --narrow: 820px;
+}
+
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.container.narrow { max-width: var(--narrow); }
+
+/* ---------- Hero ---------- */
+.hero {
+  text-align: center;
+  padding: 72px 0 32px;
+}
+.title {
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-weight: 700;
+  color: var(--heading);
+  margin: 0 0 8px;
+  line-height: 1.15;
+}
+.subtitle {
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-weight: 400;
+  color: var(--heading);
+  margin: 0 auto 24px;
+  max-width: 800px;
+  line-height: 1.35;
+}
+.authors {
+  font-size: 1.15rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 20px;
+}
+.authors sup, .affiliations sup { font-size: 0.7em; }
+.affiliations {
+  margin-top: 6px;
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 20px;
+}
+
+.links {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+.btn:hover { background: var(--btn-hover); text-decoration: none; }
+.btn svg { width: 18px; height: 18px; }
+.btn.is-soon { opacity: 0.55; cursor: default; }
+.btn.is-soon:hover { background: var(--btn-bg); }
+.soon {
+  margin-left: 2px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 0.72rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Key features: outlined pills, lighter than the buttons so they read as labels, not links */
+.features {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.features li {
+  padding: 4px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* ---------- Sections ---------- */
+.section { padding: 48px 0; }
+.section.alt { background: var(--bg-alt); }
+.section.teaser { padding-top: 8px; }
+
+.section-title {
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--heading);
+  text-align: center;
+  margin: 0 0 24px;
+}
+.section-lead {
+  text-align: center;
+  color: var(--text-muted);
+  margin: -12px 0 24px;
+}
+.abstract { text-align: justify; hyphens: auto; }
+
+/* ---------- Media ---------- */
+.media {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius);
+  background: var(--media-bg);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.figure { margin: 0 auto; max-width: 820px; text-align: center; }
+/* Full image, never cropped - suits diagrams and annotated renders */
+.figure-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+.figure.wide { max-width: 1000px; }
+.figure.tall { max-width: 640px; } /* portrait figures: keep height reasonable */
+.figure figcaption { margin-top: 12px; color: var(--text-muted); }
+/* Overview: one combined image, full container width (same as the video row) */
+.section.overview { padding-top: 16px; padding-bottom: 8px; }
+.overview-fig { display: block; }
+.overview-fig img { display: block; width: 100%; height: auto; }
+.section.demos { padding-top: 8px; }
+.caption {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 12px;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.clip { margin: 0; }
+.clip figcaption {
+  text-align: center;
+  margin-top: 8px;
+  font-weight: 500;
+  color: var(--heading);
+}
+
+@media (max-width: 800px) {
+  .grid.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* Phones: keep figures/videos side by side (like Mobile ALOHA), just tighter */
+@media (max-width: 560px) {
+  .grid { gap: 10px; }
+  .clip figcaption { font-size: 0.8rem; }
+  .hero { padding-top: 48px; }
+  .features { gap: 6px; }
+  .features li { padding: 3px 10px; font-size: 0.8rem; }
+  .section { padding: 36px 0; }
+}
+
+/* ---------- Team ---------- */
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 16px;
+}
+.member { margin: 0; text-align: center; width: 112px; font-size: 0.92rem; }
+.member img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 25%;
+  background: var(--media-bg);
+}
+.member figcaption { margin-top: 8px; display: flex; flex-direction: column; }
+
+/* ---------- Lab logo ---------- */
+.lab-logo {
+  display: block;
+  height: 64px;
+  width: auto;
+  max-width: 100%;
+  margin: 8px auto 0;
+}
+
+/* ---------- Early use cases ---------- */
+.subsection-title {
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--heading);
+  text-align: center;
+  margin: 40px 0 16px;
+}
+.orgs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 12px;
+}
+.org { margin: 0; width: 112px; text-align: center; }
+.org figcaption { margin-top: 6px; font-size: 0.85rem; color: var(--text-muted); }
+.org-logo {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: #fff;
+  object-fit: cover;
+}
+/* Per-logo framing so each mark sits nicely inside its circle */
+.org-vanderbilt { object-fit: contain; padding: 20px 17px 15px; }
+.org-unc { object-fit: contain; padding: 14px; }
+
+/* ---------- Hardware ---------- */
+.resource-list {
+  margin: 0 auto;
+  padding-left: 1.2em;
+  max-width: 420px;
+  font-size: 1.05rem;
+}
+.resource-list li + li { margin-top: 8px; }
+
+
+/* ---------- Papers ---------- */
+.papers { margin: 0; padding-left: 1.6em; }
+.papers li + li { margin-top: 16px; }
+.paper-title { font-weight: 500; }
+.paper-authors { color: var(--text); font-size: 0.95rem; }
+.paper-venue { color: var(--text-muted); font-size: 0.9rem; }
+
+/* ---------- BibTeX ---------- */
+.bibtex { position: relative; }
+.bibtex pre {
+  margin: 0;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  overflow-x: auto;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.copy {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.copy:hover { background: var(--bg-alt); }
+
+/* ---------- Footer ---------- */
+.footer {
+  padding: 32px 0 48px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Phones: team and logos stay on one row. Kept at the end so it overrides the rules above. */
+@media (max-width: 560px) {
+  .team, .orgs { gap: 12px 6px; flex-wrap: nowrap; }
+  .member, .org { width: auto; flex: 1 1 0; min-width: 0; font-size: 0.72rem; }
+  .member img { width: 56px; height: 56px; }
+  .org-logo { width: 48px; height: 48px; }
+  .org-vanderbilt { padding: 12px 10px 9px; }
+  .org-unc { padding: 8px; }
+  .org figcaption { font-size: 0.68rem; }
+}
